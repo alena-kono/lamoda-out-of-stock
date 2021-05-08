@@ -7,8 +7,10 @@ from app.config import CLIENT_ID, CLIENT_SECRET
 
 
 class Auth:
-    def __init__(self, url: str, client_id: str, client_secret: str) -> None:
-        self.url = url
+    def __init__(
+        self, domain_url: str, client_id: str, client_secret: str
+            ) -> None:
+        self.domain_url = domain_url
         self.client_id = client_id
         self.client_secret = client_secret
         self.access_token = ''
@@ -21,9 +23,9 @@ class Auth:
             }
 
     def _get_access_token(self) -> Optional[str]:
-        token_url = ''.join((self.url, '/auth/token'))
+        request_url = ''.join((self.domain_url, '/auth/token'))
         params = self._get_request_params()
-        response = requests.get(token_url, params=params)
+        response = requests.get(request_url, params=params)
         if response.status_code == 200:
             return str(response.json().get('access_token'))
         return None
@@ -43,6 +45,6 @@ class Auth:
 
 
 def get_auth_headers():
-    URL = 'https://api-demo-b2b.lamoda.ru'
-    a = Auth(URL, CLIENT_ID, CLIENT_SECRET)
+    DOMAIN_URL = 'https://api-demo-b2b.lamoda.ru'
+    a = Auth(DOMAIN_URL, CLIENT_ID, CLIENT_SECRET)
     return a.get_oauth2_headers()
