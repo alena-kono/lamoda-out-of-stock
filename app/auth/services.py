@@ -1,8 +1,9 @@
 from typing import Dict, NoReturn, Optional
 
 import requests
+from app.auth.exceptions import AccessTokenError
 
-from auth.exceptions import AccessTokenError
+from app.config import CLIENT_ID, CLIENT_SECRET
 
 
 class Auth:
@@ -39,3 +40,9 @@ class Auth:
             'Content-type': 'application/json',
             'Authorization': f'Bearer {self.access_token}'
             }
+
+
+def get_auth_headers():
+    URL = 'https://api-demo-b2b.lamoda.ru'
+    a = Auth(URL, CLIENT_ID, CLIENT_SECRET)
+    return a.get_oauth2_headers()
