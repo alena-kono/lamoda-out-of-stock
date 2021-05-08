@@ -3,7 +3,7 @@ from typing import Dict, NoReturn, Optional
 import requests
 from app.auth.exceptions import AccessTokenError
 
-from app.config import CLIENT_ID, CLIENT_SECRET
+from app.config import CLIENT_ID, CLIENT_SECRET, LAMODA_ENV_URL
 
 
 class Auth:
@@ -45,6 +45,6 @@ class Auth:
 
 
 def get_auth_headers():
-    DOMAIN_URL = 'https://api-demo-b2b.lamoda.ru'
-    a = Auth(DOMAIN_URL, CLIENT_ID, CLIENT_SECRET)
+    url = LAMODA_ENV_URL
+    a = Auth(url, CLIENT_ID, CLIENT_SECRET)
     return a.get_oauth2_headers()
