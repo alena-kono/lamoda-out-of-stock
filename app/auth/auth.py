@@ -2,6 +2,7 @@ from typing import Dict, NoReturn, Optional
 
 import requests
 from app.auth.exceptions import AccessTokenError
+from app.utils import create_url
 
 
 class Auth:
@@ -21,9 +22,10 @@ class Auth:
             }
 
     def _get_auth_response(self) -> requests.Response:
-        request_url = ''.join((self.domain_url, '/auth/token'))
+        url_parts = [self.domain_url, '/auth/token']
         params = self._get_request_params()
-        return requests.get(request_url, params=params)
+        request_url = create_url(url_parts, params)
+        return requests.get(request_url)
 
     def _get_access_token(response: requests.Response) -> Optional[str]:
         if response.status_code == 200:
