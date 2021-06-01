@@ -26,7 +26,7 @@ class Auth:
         params = self._get_request_params()
         request_url = create_url(url_parts, params)
         return requests.get(request_url)
-    
+
     @staticmethod
     def _get_access_token(response: requests.Response) -> Optional[str]:
         if response.status_code == 200:

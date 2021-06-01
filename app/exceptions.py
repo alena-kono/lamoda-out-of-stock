@@ -6,7 +6,7 @@ class BaseAppException(Exception):
 
 
 class NoJsonError(BaseAppException):
-    '''The exception is raised when Response object does not 
+    '''The exception is raised when Response object does not
     contain a valid json.
     '''
     def __init__(self):
