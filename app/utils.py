@@ -9,7 +9,7 @@ from app.exceptions import NoJsonError
 def create_url(urls: List[str], params: Optional[Dict] = None) -> str:
     if not urls:
         raise ValueError('urls should not be empty list')
-    urls_str = ''.join(urls)
+    urls_str = ''.join([str(_) for _ in urls])
     if params:
         if not isinstance(params, dict):
             raise TypeError(
