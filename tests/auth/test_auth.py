@@ -1,11 +1,11 @@
+from collections import namedtuple
+
 import pytest
 import requests
-from collections import namedtuple
 import requests_mock
-
 from app.auth.auth import Auth
-from app.utils import create_url
 from app.auth.exceptions import AccessTokenError
+from app.utils import create_url
 
 
 @pytest.fixture
