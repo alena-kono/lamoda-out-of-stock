@@ -33,8 +33,9 @@ class Auth:
             return str(response.json().get('access_token'))
         return None
 
-    def _set_access_token(self) -> Optional[NoReturn]:
-        if access_token := self._get_access_token():
+    def _set_access_token(
+            self, response: requests.Response) -> Optional[NoReturn]:
+        if access_token := self._get_access_token(response):
             self.access_token = access_token
             return None
         raise AccessTokenError('Access token is missing')
