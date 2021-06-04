@@ -14,6 +14,9 @@ class Auth:
         self.client_secret = client_secret
         self.access_token = ''
 
+    def __repr__(self):
+        return f'<{self.__class__.__name__} {self.__dict__}>'
+
     def _get_request_params(self) -> Dict[str, str]:
         return {
             'client_id': self.client_id,
@@ -25,17 +28,16 @@ class Auth:
         url_parts = [self.domain_url, '/auth/token']
         params = self._get_request_params()
         request_url = create_url(url_parts, params)
-        return requests.get(request_url)
+        self.response = requests.get(request_url)
 
-    @staticmethod
-    def _get_access_token(response: requests.Response) -> Optional[str]:
-        if response.status_code == 200:
-            return str(response.json().get('access_token'))
+    def _get_access_token(self) -> Optional[str]:
+        self._get_auth_response()
+        if self.response.status_code == 200:
+            return str(self.response.json().get('access_token'))
         return None
 
-    def _set_access_token(
-            self, response: requests.Response) -> Optional[NoReturn]:
-        if access_token := self._get_access_token(response):
+    def _set_access_token(self) -> Optional[NoReturn]:
+        if access_token := self._get_access_token():
             self.access_token = access_token
             return None
         raise AccessTokenError('Access token is missing')
