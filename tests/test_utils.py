@@ -3,6 +3,7 @@ import json
 import pytest
 import requests
 import requests_mock
+from app.exceptions import NoJsonError
 from app.utils import create_url, parse_json_response
 
 
@@ -50,18 +51,31 @@ def sample_json():
 
 
 @pytest.fixture
-def sample_response(sample_json):
+def sample_response_with_valid_json(sample_json):
     url = 'https://test.com'
     with requests_mock.Mocker() as request_mocker:
         request_mocker.get(url, json=sample_json)
         return requests.get(url)
 
 
-def test_parse_json_response(sample_response):
-    parsed_json = parse_json_response(response=sample_response)
+@pytest.fixture
+def sample_response_with_no_json():
+    url = 'https://test.com'
+    with requests_mock.Mocker() as request_mocker:
+        request_mocker.get(url)
+        return requests.get(url)
+
+
+def test_parse_json_response(sample_response_with_valid_json):
+    parsed_json = parse_json_response(response=sample_response_with_valid_json)
     expected_json = {
         "page": "1",
         "limit": "1000000",
         "_links": [],
         }
     assert parsed_json == expected_json
+
+
+def test_parse_json_response_no_json(sample_response_with_no_json):
+    with pytest.raises(NoJsonError):
+        parse_json_response(sample_response_with_no_json)
