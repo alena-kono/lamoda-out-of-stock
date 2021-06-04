@@ -21,27 +21,35 @@ def test_get_request_params(sample_auth, sample_credentials):
 
 
 def test_get_auth_response(sample_auth, sample_auth_response_200):
+    sample_auth._get_auth_response()
+    response = sample_auth.response
     response_expected = sample_auth_response_200
-    response = sample_auth._get_auth_response()
     assert response.status_code == response_expected.status_code
     assert response.url == response_expected.url
     assert response.headers == response_expected.headers
 
 
 def test_get_access_token(sample_auth, sample_auth_response_200):
-    access_token = sample_auth._get_access_token(sample_auth_response_200)
+    access_token = sample_auth._get_access_token()
     access_token_expected = sample_auth_response_200.json()['access_token']
     assert access_token == access_token_expected
 
 
 def test_set_access_token(sample_auth, sample_auth_response_200):
-    response = sample_auth._get_auth_response()
-    sample_auth._set_access_token(response)
+    sample_auth._set_access_token()
     access_token_expected = sample_auth_response_200.json()['access_token']
     assert sample_auth.access_token == access_token_expected
 
 
 def test_set_access_token_none_value(sample_auth, sample_auth_response_404):
-    response = sample_auth._get_auth_response()
     with pytest.raises(AccessTokenError):
-        sample_auth._set_access_token(response)
+        sample_auth._set_access_token()
+
+
+def test_get_oauth2_headers(sample_auth, sample_auth_response_200):
+    headers = sample_auth.get_oauth2_headers()
+    headers_expected = {
+        'Content-type': 'application/json',
+        'Authorization': f'Bearer {sample_auth.access_token}',
+        }
+    assert headers == headers_expected
