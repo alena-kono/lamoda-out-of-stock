@@ -60,7 +60,11 @@ def request_mocker():
 
 
 @pytest.fixture
-def sample_auth_response_200(request_mocker, sample_auth_token_url, sample_access_token_json):
+def sample_auth_response_200(
+    request_mocker,
+    sample_auth_token_url,
+    sample_access_token_json
+        ):
     request_mocker.get(sample_auth_token_url, json=sample_access_token_json)
     return requests.get(sample_auth_token_url)
 

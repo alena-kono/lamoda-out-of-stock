@@ -29,7 +29,10 @@ def test_create_url_with_not_dict_params():
         create_url(urls=urls, params=params)
 
 
-def test_parse_json_response(sample_auth_response_200, sample_access_token_json_str):
+def test_parse_json_response(
+    sample_auth_response_200,
+    sample_access_token_json_str
+        ):
     parsed_json = parse_json_response(response=sample_auth_response_200)
     assert parsed_json == json.loads(sample_access_token_json_str)
 
