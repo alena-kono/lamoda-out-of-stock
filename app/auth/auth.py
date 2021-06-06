@@ -14,7 +14,7 @@ class Auth:
         self.client_secret = client_secret
         self.access_token = ''
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f'<{self.__class__.__name__} {self.__dict__}>'
 
     def _get_request_params(self) -> Dict[str, str]:
@@ -28,10 +28,14 @@ class Auth:
         url_parts = [self.domain_url, '/auth/token']
         params = self._get_request_params()
         request_url = create_url(url_parts, params)
-        self.response = requests.get(request_url)
+        return requests.get(request_url)
+
+    def _set_auth_response(self, response: requests.Response) -> None:
+        self.response = response
 
     def _get_access_token(self) -> Optional[str]:
-        self._get_auth_response()
+        response = self._get_auth_response()
+        self._set_auth_response(response)
         if self.response.status_code == 200:
             return str(self.response.json().get('access_token'))
         return None
