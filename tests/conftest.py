@@ -76,6 +76,15 @@ def sample_auth_response_404(request_mocker, sample_auth_token_url):
 
 
 @pytest.fixture
+def expected_oauth2_headers(sample_access_token_json):
+    access_token = sample_access_token_json['access_token']
+    return {
+        'Content-type': 'application/json',
+        'Authorization': f'Bearer {access_token}',
+        }
+
+
+@pytest.fixture
 def expected_urls():
     urls_with_dict_params = {
         'https://test.com/auth/token?client_id=42&name=Best-Client': {

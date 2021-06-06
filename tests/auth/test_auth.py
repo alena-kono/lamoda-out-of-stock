@@ -49,10 +49,6 @@ def test_set_access_token_none_value(sample_auth, sample_auth_response_404):
         sample_auth._set_access_token()
 
 
-def test_get_oauth2_headers(sample_auth, sample_auth_response_200):
+def test_get_oauth2_headers(sample_auth, sample_auth_response_200, expected_oauth2_headers):
     headers = sample_auth.get_oauth2_headers()
-    headers_expected = {
-        'Content-type': 'application/json',
-        'Authorization': f'Bearer {sample_auth.access_token}',
-        }
-    assert headers == headers_expected
+    assert headers == expected_oauth2_headers
