@@ -22,6 +22,6 @@ jobs:
       - name: Run flake8
         run: flake8 .
       - name: Run mypy
-        run: mypy .
+        run: cd app && mypy .
       - name: Run tests with pytest
         run: pytest
