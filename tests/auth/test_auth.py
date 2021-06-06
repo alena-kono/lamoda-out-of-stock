@@ -21,12 +21,15 @@ def test_get_request_params(sample_auth, sample_credentials):
 
 
 def test_get_auth_response(sample_auth, sample_auth_response_200):
-    sample_auth._get_auth_response()
-    response = sample_auth.response
+    response = sample_auth._get_auth_response()
     response_expected = sample_auth_response_200
     assert response.status_code == response_expected.status_code
     assert response.url == response_expected.url
     assert response.headers == response_expected.headers
+
+def test_set_auth_response(sample_auth, sample_auth_response_200):
+    sample_auth._set_auth_response(sample_auth_response_200)
+    assert sample_auth.response == sample_auth_response_200
 
 
 def test_get_access_token(sample_auth, sample_auth_response_200):
