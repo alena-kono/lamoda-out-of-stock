@@ -27,6 +27,7 @@ def test_get_auth_response(sample_auth, sample_auth_response_200):
     assert response.url == response_expected.url
     assert response.headers == response_expected.headers
 
+
 def test_set_auth_response(sample_auth, sample_auth_response_200):
     sample_auth._set_auth_response(sample_auth_response_200)
     assert sample_auth.response == sample_auth_response_200
@@ -49,6 +50,10 @@ def test_set_access_token_none_value(sample_auth, sample_auth_response_404):
         sample_auth._set_access_token()
 
 
-def test_get_oauth2_headers(sample_auth, sample_auth_response_200, expected_oauth2_headers):
+def test_get_oauth2_headers(
+    sample_auth,
+    sample_auth_response_200,
+    expected_oauth2_headers
+        ):
     headers = sample_auth.get_oauth2_headers()
     assert headers == expected_oauth2_headers
