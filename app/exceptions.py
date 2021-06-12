@@ -6,9 +6,16 @@ class BaseAppException(Exception):
 
 
 class NoJsonError(BaseAppException):
-    '''The exception is raised when Response object does not
+    '''Raised when Response object does not
     contain a valid json.
     '''
     def __init__(self) -> None:
         message = 'Response object does not contain a valid json'
+        super().__init__(message)
+
+
+class InvalidConfigError(BaseAppException):
+    '''Raised when invalid config name is passed'''
+    def __init__(self) -> None:
+        message = 'Invalid config name is passed'
         super().__init__(message)
