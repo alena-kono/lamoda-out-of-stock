@@ -35,7 +35,10 @@ class Config:
 
     def load_env(self, environment: str) -> None:
         self._set_env(environment)
-        dotenv.load_dotenv(dotenv_path=self.ENV_CONFIG[self.environment])
+        dotenv_path = self.ENV_CONFIG[self.environment]
+        if not dotenv_path:
+            raise FileNotFoundError('Dotenv_file is not found at current dir')
+        dotenv.load_dotenv(dotenv_path=dotenv_path)
 
     def get_config(self) -> tuple:
         config = []
