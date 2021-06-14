@@ -5,18 +5,25 @@ import pytest
 import requests
 import requests_mock
 from app.auth.auth import Auth
-from app.config import Config, conf
+from app.config import cfg
 from app.utils import create_url
 
 
 @pytest.fixture(scope='session', autouse=True)
 def tests_setup_and_teardown():
-    Config('test').load_env_vars()
+    cfg.load_env('test')
     yield
 
 
+@pytest.fixture
+def missing_env_vars(monkeypatch):
+    env_vars_names = cfg.ENV_VARS_NAMES
+    for var_name in env_vars_names:
+        monkeypatch.delenv(var_name, raising=True)
+
+
 def test_config_is_equal(sample_credentials, sample_auth_response_200):
-    assert sample_credentials.domain_url == conf.get_config()[0]
+    assert sample_credentials.domain_url == cfg.get_config()[0]
 
 
 @pytest.fixture
