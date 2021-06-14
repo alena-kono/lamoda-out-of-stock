@@ -1,4 +1,5 @@
 import os
+import sys
 
 import dotenv
 
@@ -13,29 +14,37 @@ class Config:
         'demo': '.env_demo',
         'test': '.env_test',
         }
+    ENV_VARS_NAMES = (
+        'LAMODA_ENV_URL',
+        'CLIENT_ID',
+        'CLIENT_SECRET',
+        'FLASK_SECRET_KEY',
+    )
 
-    def __init__(self, environment: str) -> None:
+    def __init__(self) -> None:
+        pass
+
+    def __repr__(self) -> str:
+        env_info = self.environment or 'not set'
+        return f'<{self.__class__.__name__} - {env_info}>'
+
+    def _set_env(self, environment: str) -> None:
         if environment not in self.ENV_CONFIG:
             raise InvalidConfigError
         self.environment = environment
 
-    def __repr__(self) -> str:
-        return f'<Config - {self.environment}>'
-
-    def load_env_vars(self) -> None:
+    def load_env(self, environment: str) -> None:
+        self._set_env(environment)
         dotenv.load_dotenv(dotenv_path=self.ENV_CONFIG[self.environment])
 
-    @staticmethod
-    def _get_config_from_env_vars() -> tuple:
-        SECRET_KEY = os.environ.get('FLASK_SECRET_KEY')
-        CLIENT_ID = os.environ.get('CLIENT_ID')
-        CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
-        LAMODA_ENV_URL = os.environ.get('LAMODA_ENV_URL')
-        return (LAMODA_ENV_URL, CLIENT_ID, CLIENT_SECRET, SECRET_KEY)
-
     def get_config(self) -> tuple:
-        self.load_env_vars()
-        return self._get_config_from_env_vars()
+        config = []
+        for var_name in self.ENV_VARS_NAMES:
+            var_value = os.environ.get(var_name)
+            config.append(var_value)
+        return tuple(config)
 
 
-conf = Config(ENVIRONMENT)
+cfg = Config()
+if 'pytest' not in sys.modules:
+    cfg.load_env(ENVIRONMENT)
