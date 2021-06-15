@@ -40,7 +40,7 @@ class Config:
             raise FileNotFoundError('Dotenv_file is not found at current dir')
         dotenv.load_dotenv(dotenv_path=dotenv_path)
 
-    def get_config(self) -> tuple:
+    def get(self) -> tuple:
         config = []
         for var_name in self.ENV_VARS_NAMES:
             var_value = os.environ.get(var_name)

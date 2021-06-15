@@ -6,7 +6,7 @@ from app.config import cfg
 
 
 def get_auth_headers() -> Dict[str, str]:
-    credentials = cfg.get_config()[0:3]
+    credentials = cfg.get()[0:3]
     if all(credentials):
         a = Auth(*credentials)
         return a.get_oauth2_headers()
