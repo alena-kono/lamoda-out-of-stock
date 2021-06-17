@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "lamoda-out-of-stock"
+version = "0.1.0"
+description = ""
+authors = ["Alena Konovalova <konovalova.alena@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.25.1"
+python-dotenv = "^0.17.1"
+Flask = "^2.0.1"
+
+[tool.poetry.dev-dependencies]
+mypy = "flake8"
+pytest = "^6.2.4"
+requests-mock = "^1.9.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
