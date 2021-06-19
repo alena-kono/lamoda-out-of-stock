@@ -12,6 +12,7 @@ python-dotenv = "^0.17.1"
 Flask = "^2.0.1"
 flake8 = "^3.9.2"
 stubs = "^1.0.0"
+types-requests = "^0.1.12"
 
 [tool.poetry.dev-dependencies]
 mypy = "flake8"
