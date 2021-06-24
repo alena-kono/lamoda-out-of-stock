@@ -1,11 +1,18 @@
 import os
 import sys
+from pathlib import Path
 
 import dotenv
 
 from app.exceptions import InvalidConfigError
 
 ENVIRONMENT = 'production'
+basedir = Path(__file__).parents[1]
+db_filename = 'lamoda_stock.db'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + str(Path.joinpath(
+    basedir,
+    db_filename
+    ))
 
 
 class Config:
