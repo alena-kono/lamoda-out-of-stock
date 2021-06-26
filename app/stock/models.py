@@ -1,56 +1,38 @@
 from datetime import datetime
-from typing import Dict, List, NoReturn, Optional, Union
+from typing import Dict, List
 
-from sqlalchemy import DateTime, Integer, String, create_engine
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy import DateTime, Integer, String, inspect
 from sqlalchemy.sql.schema import Column
 
-from app.config import SQLALCHEMY_DATABASE_URI
-
-
-engine = create_engine(SQLALCHEMY_DATABASE_URI, echo=False, future=True)
-Session = sessionmaker(engine)
-Base = declarative_base()
+from app.db import Base, Session
+from app.stock.utils import add_current_datetime, convert_quantity_to_int
 
 
 class Stock(Base):
     __tablename__ = 'stock'
+
     id = Column(Integer, primary_key=True)
     sku = Column(String(), unique=True)
-    quantity = Column(Integer)
-    date_time = Column(DateTime)
+    quantity = Column(Integer, nullable=False, default=0)
+    date_time = Column(DateTime, nullable=False)
 
     def __repr__(self) -> str:
-        return f'<Stock({self.__dict__})>'
+        cls_name, instance_props = self.__class__.__name__, self.__dict__
+        return f'<{cls_name}({instance_props})>'
 
     @staticmethod
-    def _convert_str_to_int(string: str) -> Union[int, NoReturn]:
-        try:
-            converted_int = int(string)
-        except ValueError:
-            raise ValueError
-        return converted_int
+    def preprocess_stock_states(stock_states: List[Dict]) -> List[Dict]:
+        now = datetime.now()
+        for sku_size in stock_states:
+            convert_quantity_to_int(sku_size)
+            add_current_datetime(sku_size, now)
+        return stock_states
 
-    def _add_one_sku(self, sku: str, quantity: str):
-        int_quantity = self._convert_str_to_int(quantity)
-        date_time = datetime.now()
-        stock = Stock(
-            sku=sku,
-            quantity=int_quantity,
-            date_time=date_time,
-        )
-        return stock
-
-    def extract_stock(self, stock_states: List[Dict]) -> list:
-        stock_objects = []
-        for sku_qty in stock_states:
-            stock = self._add_one_sku(sku_qty['sku'], sku_qty['quantity'])
-            stock_objects.append(stock)
-        return stock_objects
-
-    @staticmethod
-    def save_bulk(stock_objects: list) -> None:
-        # main() time performance: 0.0041 s
+    def bulk_insert_mapping(self, stock_states: List[Dict]) -> None:
+        mapper_class = inspect(self.__class__)
         with Session() as session:
-            session.bulk_save_objects(stock_objects)
+            session.bulk_insert_mappings(
+                mapper_class,
+                stock_states
+                )
             session.commit()

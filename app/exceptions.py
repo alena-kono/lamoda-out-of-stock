@@ -19,3 +19,11 @@ class InvalidConfigError(BaseAppException):
     def __init__(self) -> None:
         message = 'Invalid config name is passed'
         super().__init__(message)
+
+
+class ConvertionError(BaseAppException):
+    '''Raised when str cannot be converted to int'''
+    def __init__(self, message: str) -> None:
+        if not message:
+            message = 'str cannot be converted to int'
+        super().__init__(message)
