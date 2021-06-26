@@ -12,7 +12,7 @@ class Stock(Base):
     __tablename__ = 'stock'
 
     id = Column(Integer, primary_key=True)
-    sku = Column(String(), unique=True)
+    sku = Column(String(), index=True)
     quantity = Column(Integer, nullable=False, default=0)
     date_time = Column(DateTime, nullable=False)
 
