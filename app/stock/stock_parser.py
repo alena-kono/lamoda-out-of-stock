@@ -37,6 +37,6 @@ class StockParser:
             return embedded.get('stockStates')
         return None
 
-    def get_stock_states(self) -> Optional[List]:
-        stock_json = self.get_stock()
+    def get_stock_states(self, updated_at: str = '') -> Optional[List]:
+        stock_json = self.get_stock(updated_at)
         return self._extract_stock_states(stock_json)
