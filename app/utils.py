@@ -3,7 +3,7 @@ from typing import Dict, List, Optional
 
 import requests
 
-from app.exceptions import NoJsonError
+from app.exceptions import InvalidJsonError
 
 
 def create_url(urls: List[str], params: Optional[Dict] = None) -> str:
@@ -29,5 +29,5 @@ def parse_json_response(response: requests.Response) -> dict:
     try:
         parsed_json = response.json()
     except JSONDecodeError:
-        raise NoJsonError()
+        raise InvalidJsonError()
     return parsed_json

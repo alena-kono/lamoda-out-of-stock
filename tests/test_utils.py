@@ -1,7 +1,7 @@
 import json
 
 import pytest
-from app.exceptions import NoJsonError
+from app.exceptions import InvalidJsonError
 from app.utils import create_url, parse_json_response
 
 
@@ -38,5 +38,5 @@ def test_parse_json_response(
 
 
 def test_parse_json_response_no_json(sample_auth_response_404):
-    with pytest.raises(NoJsonError):
+    with pytest.raises(InvalidJsonError):
         parse_json_response(sample_auth_response_404)

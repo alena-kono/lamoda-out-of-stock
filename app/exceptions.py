@@ -5,7 +5,7 @@ class BaseAppException(Exception):
     pass
 
 
-class NoJsonError(BaseAppException):
+class InvalidJsonError(BaseAppException):
     ''':exception: raised when Response object does not
     contain a valid json.
     '''
