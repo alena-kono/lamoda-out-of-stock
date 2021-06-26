@@ -1,35 +1,34 @@
-atomicwrites==1.4.0; python_version >= "3.6" and python_full_version < "3.0.0" and sys_platform == "win32" or sys_platform == "win32" and python_version >= "3.6" and python_full_version >= "3.4.0"
-attrs==21.2.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
-certifi==2021.5.30; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
-chardet==4.0.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
-click==8.0.1; python_version >= "3.6"
-colorama==0.4.4; python_version >= "3.6" and python_full_version < "3.0.0" and sys_platform == "win32" and platform_system == "Windows" or sys_platform == "win32" and python_version >= "3.6" and python_full_version >= "3.5.0" and platform_system == "Windows"
-flake8==3.9.2; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
-flask==2.0.1; python_version >= "3.6"
-greenlet==1.1.0; python_version >= "3" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3"
-idna==2.10; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
-iniconfig==1.1.1; python_version >= "3.6"
-itsdangerous==2.0.1; python_version >= "3.6"
-jinja2==3.0.1; python_version >= "3.6"
-markupsafe==2.0.1; python_version >= "3.6"
-mccabe==0.6.1; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
-mypy-extensions==0.4.3; python_version >= "3.5"
-mypy==0.902; python_version >= "3.5"
-packaging==20.9; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
-pluggy==0.13.1; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
-py==1.10.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
-pycodestyle==2.7.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
-pyflakes==2.3.1; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
-pyparsing==2.4.7; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
-pytest==6.2.4; python_version >= "3.6"
-python-dotenv==0.17.1
-requests-mock==1.9.3
-requests==2.25.1; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
-six==1.16.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.3.0"
-sqlalchemy==1.4.18; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.6.0")
-stubs==1.0.0
-toml==0.10.2; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.3.0" and python_version >= "3.6"
+attrs @ file:///Users/alena/Library/Caches/pypoetry/artifacts/6f/a9/ee/569c37f69a8c365ee41d2340aeac0214ee8c0086b8d8db43a21545204b/attrs-21.2.0-py2.py3-none-any.whl
+certifi @ file:///Users/alena/Library/Caches/pypoetry/artifacts/cd/2c/dc/e5bfda594e18f3f1e9af9f11e13581014d821425f325f3220b3ed2c337/certifi-2021.5.30-py2.py3-none-any.whl
+chardet @ file:///Users/alena/Library/Caches/pypoetry/artifacts/11/63/f9/797eda27963177a6b75a340f62aa194d462ea69e6b0dbb77a651fa2b62/chardet-4.0.0-py2.py3-none-any.whl
+click @ file:///Users/alena/Library/Caches/pypoetry/artifacts/ae/32/83/e159324c1bd58177322f4e45f598d500fe22544bff20f53f55cf749da8/click-8.0.1-py3-none-any.whl
+flake8 @ file:///Users/alena/Library/Caches/pypoetry/artifacts/3f/57/d5/11722093c13092cc3bfc3dd7c88aef6f8e4d5ac97cfe5fd054d5aba412/flake8-3.9.2-py2.py3-none-any.whl
+Flask @ file:///Users/alena/Library/Caches/pypoetry/artifacts/11/d0/70/f0ced5a972a10ba57f76ae7688eed0964eb52c935dc381d4a8d4bccce3/Flask-2.0.1-py3-none-any.whl
+greenlet @ file:///Users/alena/Library/Caches/pypoetry/artifacts/15/89/98/c3b69881b44682bbfee6024f16ba39146063e2919b7d7323d2a42bd3b2/greenlet-1.1.0-cp39-cp39-macosx_10_14_x86_64.whl
+idna @ file:///Users/alena/Library/Caches/pypoetry/artifacts/ef/7f/a9/19cc0b8760bdf6f696290c06532496f8bb29fbdaad044f852fed00ec82/idna-2.10-py2.py3-none-any.whl
+iniconfig @ file:///Users/alena/Library/Caches/pypoetry/artifacts/fa/b0/c6/10cfac68c9e6de9d2a1678366ca89fd9292b362c1760dbe758e41691cb/iniconfig-1.1.1-py2.py3-none-any.whl
+itsdangerous @ file:///Users/alena/Library/Caches/pypoetry/artifacts/56/85/a6/70db371e4b63cdd55bf95de92ac726d8cf622812e0d7383910edd55619/itsdangerous-2.0.1-py3-none-any.whl
+Jinja2 @ file:///Users/alena/Library/Caches/pypoetry/artifacts/21/2e/46/0a76ea6f6a15e594c9828a85a781f1cee8ed5a1b77e361305645f9e1f4/Jinja2-3.0.1-py3-none-any.whl
+MarkupSafe @ file:///Users/alena/Library/Caches/pypoetry/artifacts/20/e4/29/5b1a93d4ee8437f01551437cffbb57ba6744c59796443ca99051473f75/MarkupSafe-2.0.1-cp39-cp39-macosx_10_9_x86_64.whl
+mccabe @ file:///Users/alena/Library/Caches/pypoetry/artifacts/96/5e/5f/21ae5296697ca7f94de4da6e21d4936d74029c352a35202e4c339a4253/mccabe-0.6.1-py2.py3-none-any.whl
+mypy @ file:///Users/alena/Library/Caches/pypoetry/artifacts/51/fc/be/d08e8c1cd00a48cfc10fac8d26ca3eec94abb83ea01fec8032cd05e7e0/mypy-0.902-cp39-cp39-macosx_10_9_x86_64.whl
+mypy-extensions @ file:///Users/alena/Library/Caches/pypoetry/artifacts/92/45/bf/1807ce854ff668d92602207a37bfa9316def2a3f257bd03c4c5be4bc9b/mypy_extensions-0.4.3-py2.py3-none-any.whl
+packaging @ file:///Users/alena/Library/Caches/pypoetry/artifacts/c2/76/aa/699ed723689e741411dfbdbc9b8c392079d54fb1e1a1b814df7be7cf47/packaging-20.9-py2.py3-none-any.whl
+pluggy @ file:///Users/alena/Library/Caches/pypoetry/artifacts/29/58/fc/ed8b7451d3ef91a6465024f5656141da996e7aafd4d41a1659629a75e7/pluggy-0.13.1-py2.py3-none-any.whl
+psycopg2==2.9.1
+py @ file:///Users/alena/Library/Caches/pypoetry/artifacts/60/79/0b/c48bd9c2a989aa8b1eb7a67cd02b053c10734f2e4e5665f7995f09999c/py-1.10.0-py2.py3-none-any.whl
+pycodestyle @ file:///Users/alena/Library/Caches/pypoetry/artifacts/4c/30/97/026c283ef67eb248e5b7e6fad1f8ffb99dae50c11fd93eb939fd7c1f46/pycodestyle-2.7.0-py2.py3-none-any.whl
+pyflakes @ file:///Users/alena/Library/Caches/pypoetry/artifacts/eb/c4/2c/47fcc1b3f387b1f7033e85b3ac6ee7772338461a8de8ac3977c6a7dcc1/pyflakes-2.3.1-py2.py3-none-any.whl
+pyparsing @ file:///Users/alena/Library/Caches/pypoetry/artifacts/92/0f/cf/effdcd5d76a6186df0969f85b3b030284ff8058936d5016540b5258ea3/pyparsing-2.4.7-py2.py3-none-any.whl
+pytest @ file:///Users/alena/Library/Caches/pypoetry/artifacts/17/a3/46/eb89acf91c8962553e409da649186ff5e3d2c1c93195f0643e7dfd1b57/pytest-6.2.4-py3-none-any.whl
+python-dotenv @ file:///Users/alena/Library/Caches/pypoetry/artifacts/a6/61/71/a8300bb6be27750f8810f5d2a0c070e220ebc1a416f0837d4bbc283391/python_dotenv-0.17.1-py2.py3-none-any.whl
+requests @ file:///Users/alena/Library/Caches/pypoetry/artifacts/22/0a/9d/0df883fbffbb406d0cddbb35e881e4ac6bfb8f0dee8733056b6a054bf7/requests-2.25.1-py2.py3-none-any.whl
+requests-mock @ file:///Users/alena/Library/Caches/pypoetry/artifacts/7c/1b/af/fe7751cc699e2813bdbbab5cdfcc433eff3fb8e461dcbfe4dee13a3485/requests_mock-1.9.3-py2.py3-none-any.whl
+six @ file:///Users/alena/Library/Caches/pypoetry/artifacts/08/9f/47/c16ae03035fc69eaf100ea39657a49baaeef714e25a52575710c34cd48/six-1.16.0-py2.py3-none-any.whl
+SQLAlchemy @ file:///Users/alena/Library/Caches/pypoetry/artifacts/b4/4d/4f/f8bf44ee230fb8b090477342254428bd8f157479710b8e304898aa8341/SQLAlchemy-1.4.18-cp39-cp39-macosx_10_14_x86_64.whl
+stubs @ file:///Users/alena/Library/Caches/pypoetry/artifacts/b3/18/c3/a87eccf7a2ee1b5cc20477623fc4b5eb9797486b4e45948ecd87c4bd2f/stubs-1.0.0-py3-none-any.whl
+toml @ file:///Users/alena/Library/Caches/pypoetry/artifacts/6b/6a/c9/53b19f7870a77d855e8b05ecdc98193944e5d246dafe11bbcad850ecba/toml-0.10.2-py2.py3-none-any.whl
 types-requests==0.1.12
-typing-extensions==3.10.0.0; python_version >= "3.5"
-urllib3==1.26.5; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version < "4"
-werkzeug==2.0.1; python_version >= "3.6"
+typing-extensions @ file:///Users/alena/Library/Caches/pypoetry/artifacts/3d/38/26/2c9b521373bbaf207e658ec81f51aa2a8af7454bfe4d7c15743a6533d5/typing_extensions-3.10.0.0-py3-none-any.whl
+urllib3 @ file:///Users/alena/Library/Caches/pypoetry/artifacts/51/08/ff/7c6aaf6cf9ca83a0bf63c5121f187a40571849e9b17bd8e031898d76c2/urllib3-1.26.5-py2.py3-none-any.whl
+Werkzeug @ file:///Users/alena/Library/Caches/pypoetry/artifacts/4f/82/5b/068ad32eb584b1a25f08994af7a9721c4c3fc69bb03dda7e400fb2f1ea/Werkzeug-2.0.1-py3-none-any.whl
