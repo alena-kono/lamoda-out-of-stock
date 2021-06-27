@@ -6,13 +6,11 @@ import dotenv
 
 from app.exceptions import InvalidConfigError
 
-ENVIRONMENT = 'production'
-basedir = Path(__file__).parents[1]
-db_filename = 'lamoda_stock.db'
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + str(Path.joinpath(
-    basedir,
-    db_filename
-    ))
+ENVIRONMENT = 'demo'
+
+# postgresql+psycopg2://user:password@host:port/dbname[?key=value&key=value...]
+SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://alena_kono:ak-test-PaSs@localhost/lamoda_oos'
+
 
 
 class Config:
